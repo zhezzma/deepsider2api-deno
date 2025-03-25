@@ -33,7 +33,7 @@ jobs:
         run: "deno install -gArf jsr:@deno/deployctl"
 
       - name: Build step
-        run: "deployctl deploy"
+        run: "deployctl deploy --project=deepsider-2-api"
         env:
           DENO_DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}  # 添加这行
 
