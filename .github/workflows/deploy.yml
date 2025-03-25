@@ -38,4 +38,4 @@ jobs:
           project: "deepsider-2-api"
           entrypoint: "main.ts"
           root: ""
-          token: ${{ secrets.DENO_DEPLOY_TOKEN }}  # 添加这行
+          token: ${{ secrets.DENO_DEPLOY_TOKEN }}  # æ·»å è¿è¡
