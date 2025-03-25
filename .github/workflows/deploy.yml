@@ -4,6 +4,7 @@ on:
     branches: main
   pull_request:
     branches: main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -11,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      id-token: write # Needed for auth with Deno Deploy
-      contents: read # Needed to clone the repository
+      id-token: write
+      contents: read
 
     steps:
       - name: Clone repository
@@ -33,6 +34,8 @@ jobs:
 
       - name: Build step
         run: "deployctl deploy"
+        env:
+          DENO_DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}  # 添加这行
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
@@ -40,5 +43,4 @@ jobs:
           project: "deepsider-2-api"
           entrypoint: "main.ts"
           root: ""
-          
-          
+          token: ${{ secrets.DENO_DEPLOY_TOKEN }}  # 添加这行
