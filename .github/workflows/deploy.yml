@@ -32,11 +32,6 @@ jobs:
       - name: Install step
         run: "deno install -gArf jsr:@deno/deployctl"
 
-      - name: Build step
-        run: "deployctl deploy --project=deepsider-2-api"
-        env:
-          DENO_DEPLOY_TOKEN: ${{ secrets.DENO_DEPLOY_TOKEN }}  # 添加这行
-
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
